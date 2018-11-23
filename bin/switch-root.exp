@@ -1,0 +1,14 @@
+#!/usr/bin/expect -f
+
+# Usage:
+#   ./switch-root.exp password 
+
+set pass [lrange $argv 0 0]
+
+spawn su
+match_max 100000
+expect "*?assword:*"
+send -- "$pass\r"
+send -- "\r"
+interact
+
